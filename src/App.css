@@ -1,0 +1,104 @@
+/* Reset some basic styles */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  background-color: #2d8f55;
+  padding: 1rem;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Navbar buttons style */
+.nav-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+/* Active nav link */
+.nav-button.active {
+  background-color: #357a38;
+  box-shadow: 0 0 8px #2a662b;
+}
+
+/* Hover effect */
+.nav-button:hover {
+  background-color: #45a049;
+}
+
+/* Page container padding */
+.page-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Form inputs styling */
+input, textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* Button style for forms */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* List of campaigns */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background-color: #fafafa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: #2d8f55;
+}
