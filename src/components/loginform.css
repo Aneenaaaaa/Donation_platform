@@ -1,0 +1,92 @@
+/* Page layout */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #76e2d9, #9fc4f4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Form styling */
+.login-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Submit button */
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+/* ✅ Password Strength Visual Feedback */
+
+/* Strong password border */
+.input-strong {
+  border: 2px solid green !important;
+}
+
+/* Weak password border */
+.input-weak {
+  border: 2px solid red !important;
+}
+
+/* Strength message below password */
+.strength-message {
+  text-align: left;
+  font-size: 13px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Green message for strong */
+.strength-message.strong {
+  color: green;
+}
+
+/* Red message for weak */
+.strength-message.weak {
+  color: red;
+}
