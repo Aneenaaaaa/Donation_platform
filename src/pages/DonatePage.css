@@ -1,0 +1,61 @@
+/* src/pages/DonatePage.css */
+.donate-page {
+  padding: 100px 30px 30px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.donate-page input {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.campaign-card {
+  background-color: #f9fafb;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.campaign-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.campaign-info h3 {
+  margin: 10px 0 8px;
+  color: #1e3a8a;
+}
+
+.campaign-info p {
+  color: #374151;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.campaign-info button {
+  padding: 8px 16px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
