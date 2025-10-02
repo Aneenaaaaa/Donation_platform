@@ -17,6 +17,7 @@ function NgoRegisterForm() {
 
   const [passwordStrength, setPasswordStrength] = useState('');
   const [phoneValid, setPhoneValid] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +36,7 @@ function NgoRegisterForm() {
     setPasswordStrength(strongRegex.test(pwd) ? 'strong' : 'weak');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (passwordStrength !== 'strong') {
@@ -48,9 +49,28 @@ function NgoRegisterForm() {
       return;
     }
 
-    // TODO: Send data to backend here
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:5000/ngoregister', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    navigate('/ngo-login'); // Redirect after registration
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('✅ NGO registered successfully!');
+        navigate('/ngo-login'); // redirect after successful registration
+      } else {
+        alert(`❌ ${data.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('❌ Something went wrong. Try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -129,21 +149,22 @@ function NgoRegisterForm() {
         )}
 
         <textarea
-  name="address"
-  placeholder="Organization Address"
-  value={formData.address}
-  onChange={handleChange}
-  required
-  rows="3"
-  className="address-field"
-  style={{ resize: 'none' }}
-/>
+          name="address"
+          placeholder="Organization Address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+          rows="3"
+          className="address-field"
+          style={{ resize: 'none' }}
+        />
 
-
-        <button type="submit">Register</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Registering...' : 'Register'}
+        </button>
 
         <p className="link-text">
-          Already registered? <Link to="/ngologin">Login here</Link>
+          Already registered? <Link to="/ngo-login">Login here</Link>
         </p>
       </form>
     </div>

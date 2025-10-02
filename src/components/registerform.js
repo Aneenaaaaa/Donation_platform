@@ -3,23 +3,24 @@ import { useNavigate, Link } from 'react-router-dom';
 import './loginform.css';
 
 function RegisterForm() {
+  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isStrong, setIsStrong] = useState(null);
-  const [phone, setPhone] = useState('');
   const [phoneValid, setPhoneValid] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Password strength check
   const handlePasswordChange = (e) => {
     const value = e.target.value;
     setPassword(value);
-    checkPasswordStrength(value);
-  };
-
-  const checkPasswordStrength = (pwd) => {
     const strongRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-    setIsStrong(strongRegex.test(pwd));
+    setIsStrong(strongRegex.test(value));
   };
 
+  // Phone validation
   const handlePhoneChange = (e) => {
     const value = e.target.value;
     setPhone(value);
@@ -27,20 +28,34 @@ function RegisterForm() {
     setPhoneValid(phoneRegex.test(value));
   };
 
-  const handleSubmit = (e) => {
+  // Form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!phoneValid) {
-      alert("Please enter a valid Indian phone number.");
-      return;
-    }
-    if (!isStrong) {
-      alert("Password is too weak.");
-      return;
-    }
 
-    // Perform backend registration logic here
+    if (!phoneValid) return alert("❌ Please enter a valid Indian phone number.");
+    if (!isStrong) return alert("❌ Password is too weak.");
 
-    navigate('/login');
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, phone, email, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("✅ Registration successful!");
+        navigate("/login");
+      } else {
+        alert(`❌ ${data.error}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -51,6 +66,8 @@ function RegisterForm() {
         <input
           type="text"
           placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
 
@@ -67,6 +84,8 @@ function RegisterForm() {
         <input
           type="email"
           placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
 
@@ -75,9 +94,7 @@ function RegisterForm() {
           placeholder="Password"
           value={password}
           onChange={handlePasswordChange}
-          className={
-            isStrong === null ? '' : isStrong ? 'input-strong' : 'input-weak'
-          }
+          className={isStrong === null ? '' : isStrong ? 'input-strong' : 'input-weak'}
           required
         />
         {isStrong !== null && (
@@ -86,10 +103,12 @@ function RegisterForm() {
           </div>
         )}
 
-        <button type="submit">Register</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
 
         <p className="redirect-link">
-          Already have an account? <Link to="/">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>
