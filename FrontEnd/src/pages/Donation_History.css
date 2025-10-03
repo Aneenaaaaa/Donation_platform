@@ -1,0 +1,92 @@
+.donation-history-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px 0 30px;
+  color: #333;
+}
+
+.donation-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.donation-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e6f2ff;
+  box-shadow: 0px 12px 18px rgba(0, 0, 0, 0.12);  /* 👈 stronger shadow */
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+
+.donation-card::before {
+  content: "";
+  width: 6px;
+  background: #4dafff;   /* Light blue highlight */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 12px 0 0 12px;
+}
+
+.donation-card:hover {
+  transform: translateY(-6px);  /* 👈 lift effect */
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.18); /* 👈 deeper shadow on hover */
+}
+
+.donation-card-content {
+  flex: 1;
+  padding: 22px 28px;  /* extra spacing */
+}
+
+.donation-card-content h3 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+.donation-card-content p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.donation-card-actions {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.cancel-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);  /* small pop effect */
+}
+
+.not-available {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 10px;
+}
