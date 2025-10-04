@@ -6,6 +6,12 @@ function Navbar() {
     const navigate = useNavigate();
     return (
         <div className={styles['nav-container']}>
+            
+            <div className={styles['nav-logo']} onClick={() => navigate('/')}>
+                give.do
+            </div>
+
+            
             <div className={styles['nav-list']}>
                 <button className={styles['nav-button']} onClick={() => navigate('/')}>Dashboard</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/users')}>User Management</button>

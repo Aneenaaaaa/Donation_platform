@@ -2,28 +2,40 @@
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    background-color: rgb(192, 255, 208);
+    justify-content: space-between;  /* pushes logo left & menu right */
+    padding: 0 40px;                 /* spacing on sides */
+    background-color: #1e40af;       /* Deep Blue */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Logo styling */
+.nav-logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* Nav list on right */
 .nav-list {
     display: flex;
-    gap: 50px;
+    gap: 30px;
 }
 
+/* Buttons */
 .nav-button {
-    background-color: #d10303;
+    background-color: transparent;
     border: none;
-    padding: 14px;
-    font-size: 14px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 500;
     color: white;
-    border-radius: 15px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: ease-in;
-    transition-duration: 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
 .nav-button:hover {
-    background-color: #af0202;
+    background-color: #2563eb; 
+    color: #e0f2fe;
 }

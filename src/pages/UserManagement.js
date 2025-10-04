@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+
 function UserManagement() {
   const [users, setUsers] = useState([]);
 
   // Fetch users from backend
   const loadUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/users"); // your Express backend
+      const res = await fetch("http://localhost:5000/api/users");
       const data = await res.json();
       setUsers(data);
     } catch (err) {
@@ -32,47 +33,63 @@ function UserManagement() {
     loadUsers();
   };
 
-  // Load users on mount
   useEffect(() => {
     loadUsers();
   }, []);
 
   return (
-    <div>
+    <div className="main-container">
       <h2>User Management</h2>
-      <table border="1" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length > 0 ? (
-            users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.name || user.username}</td>
-                <td>{user.email}</td>
-                <td>{user.status}</td>
-                <td>
-                  <button onClick={() => deleteUser(user._id)}>Delete</button>
-                  {user.status === "active" ? (
-                    <button onClick={() => blockUser(user._id)}>Block</button>
-                  ) : (
-                    <button onClick={() => unblockUser(user._id)}>Unblock</button>
-                  )}
-                </td>
-              </tr>
-            ))
-          ) : (
+      <div className="table-container">
+        <table className="table">
+          <thead>
             <tr>
-              <td colSpan="4">No users found</td>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.length > 0 ? (
+              users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user.name || user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.status}</td>
+                  <td>
+                    <button
+                      className="action-btn delete"
+                      onClick={() => deleteUser(user._id)}
+                    >
+                      Delete
+                    </button>
+                    {user.status === "active" ? (
+                      <button
+                        className="action-btn block"
+                        onClick={() => blockUser(user._id)}
+                      >
+                        Block
+                      </button>
+                    ) : (
+                      <button
+                        className="action-btn block"
+                        onClick={() => unblockUser(user._id)}
+                      >
+                        Unblock
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">No users found</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

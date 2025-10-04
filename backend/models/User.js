@@ -9,5 +9,5 @@ const userSchema = new mongoose.Schema({
   status: { type: String, enum: ["active", "blocked"], default: "active" }
 });
 
-// 👇 explicitly point to "users" collection
-module.exports = mongoose.model("User", userSchema, "users");
+// Reuse the model if it already exists
+module.exports = mongoose.models.User || mongoose.model("User", userSchema, "users");
