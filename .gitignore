@@ -5,15 +5,17 @@
 /.pnp
 .pnp.js
 
-# Environment variables
+# Node modules
+node_modules/
+backend/node_modules/
+
+# Environment files
 .env
 backend/.env
 
-# testing
-/coverage
+# Build folder
+build/
 
-# production
-/build
 
 # misc
 .DS_Store
