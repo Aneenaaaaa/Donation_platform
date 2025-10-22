@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Campaign = require("../models/campaign");  // you’ll need to create this model
+const Campaign = require("../models/campaign"); 
 
 // GET all campaigns
 router.get("/", async (req, res) => {

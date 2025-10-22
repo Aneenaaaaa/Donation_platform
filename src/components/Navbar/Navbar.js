@@ -17,6 +17,7 @@ function Navbar() {
                 <button className={styles['nav-button']} onClick={() => navigate('/users')}>User Management</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/campaigns')}>Campaign Approval</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/donations')}>All Donations</button>
+                <button className={styles['nav-button']} onClick={() => navigate('/ngousers')}>NGO Users</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/reports')}>Reports/Charts</button>
             </div>
         </div>

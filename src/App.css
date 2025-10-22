@@ -3,12 +3,12 @@
     padding: 0 40px;
 }
 .table-container {
-  margin: 20px auto;          /* centers the table */
-  max-width: 1200px;          /* keeps neat width */
+  margin: 20px auto;          
+  max-width: 1200px;          
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow-x: auto;           /* scroll on smaller screens */
+  overflow-x: auto;           
   padding: 16px;
 }
 

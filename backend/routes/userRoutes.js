@@ -1,36 +1,29 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-
-// Schema
-const userSchema = new mongoose.Schema({
-  name: String,
-  username: String,
-  phone: String,
-  email: String,
-  password: String,
-  status: { type: String, enum: ["active", "blocked"], default: "active" }
-});
-module.exports = mongoose.model("User", userSchema, "users");
-
-const User = mongoose.model("User", userSchema);
+const User = require("../models/user"); 
 
 // Get all users
 router.get("/", async (req, res) => {
-    try{ 
-  const users = await User.find();
-  res.json(users);
-   } catch (err) {
+  try {
+    const users = await User.find();
+    console.log("Fetched users:", users);
+    res.json(users);
+  } catch (err) {
     console.error("Error fetching users:", err);
     res.status(500).json({ error: "Server error" });
   }
 });
 
-// Add user
+// Add new user
 router.post("/", async (req, res) => {
-  const newUser = new User(req.body);
-  await newUser.save();
-  res.json(newUser);
+  try {
+    const newUser = new User(req.body);
+    await newUser.save();
+    res.json(newUser);
+  } catch (err) {
+    console.error("Error adding user:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 // Block user
