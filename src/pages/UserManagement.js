@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 function UserManagement() {
   const [users, setUsers] = useState([]);
 
@@ -15,20 +14,29 @@ function UserManagement() {
     }
   };
 
-  // Delete user
+  // Delete user with confirmation
   const deleteUser = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+    if (!confirmDelete) return;
+
     await fetch(`http://localhost:5000/api/users/${id}`, { method: "DELETE" });
     loadUsers();
   };
 
-  // Block user
+  // Block user with confirmation
   const blockUser = async (id) => {
+    const confirmBlock = window.confirm("Are you sure you want to block this user?");
+    if (!confirmBlock) return;
+
     await fetch(`http://localhost:5000/api/users/${id}/block`, { method: "PUT" });
     loadUsers();
   };
 
-  // Unblock user
+  // Unblock user with confirmation
   const unblockUser = async (id) => {
+    const confirmUnblock = window.confirm("Are you sure you want to unblock this user?");
+    if (!confirmUnblock) return;
+
     await fetch(`http://localhost:5000/api/users/${id}/unblock`, { method: "PUT" });
     loadUsers();
   };

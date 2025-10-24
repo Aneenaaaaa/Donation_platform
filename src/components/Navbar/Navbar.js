@@ -8,7 +8,7 @@ function Navbar() {
         <div className={styles['nav-container']}>
             
             <div className={styles['nav-logo']} onClick={() => navigate('/')}>
-                give.do
+                SeedFund
             </div>
 
             
@@ -18,7 +18,7 @@ function Navbar() {
                 <button className={styles['nav-button']} onClick={() => navigate('/campaigns')}>Campaign Approval</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/donations')}>All Donations</button>
                 <button className={styles['nav-button']} onClick={() => navigate('/ngousers')}>NGO Users</button>
-                <button className={styles['nav-button']} onClick={() => navigate('/reports')}>Reports/Charts</button>
+                
             </div>
         </div>
     )

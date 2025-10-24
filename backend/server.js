@@ -11,6 +11,7 @@ const campaignRoutes = require("./routes/campaignRoutes");
 const donationRoutes = require("./routes/donationRoutes");
 const dashboard = require("./routes/dashboard");
 const ngoRoutes = require("./routes/ngoRoutes");
+const weeklyRoutes = require("./routes/weekly");
 
 const app = express();
 app.use(cors());
@@ -36,6 +37,8 @@ app.use("/api/campaigns", campaignRoutes);
 app.use("/api/donations", donationRoutes);
 app.use("/api/dashboard", dashboard);
 app.use("/api/ngousers", ngoRoutes);
+app.use("/api/ngousers", ngoRoutes);
+app.use("/api/donations", weeklyRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

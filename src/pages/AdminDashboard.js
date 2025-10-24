@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
-
+import WeeklyDonationsBar from "../components/WeeklyDonationsBar";
+import DonationTypePie from "../components/DonationTypePie";
+import './AdminDashboard.css';
 
 function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -17,15 +19,41 @@ function AdminDashboard() {
   }, []);
 
   return (
-    <div>
-      <h2>Dashboard Overview</h2>
-      <p><strong>Total Users:</strong> {stats.totalUsers}</p>
-      <p><strong>Total Donations:</strong> ₹{stats.totalDonations}</p>
-      <p><strong>Active Campaigns:</strong> {stats.activeCampaigns}</p>
+    <div className="dashboard-container">
+     
+
+      <h2 className="dashboard-title">Dashboard Overview</h2>
+
+      {/* Stats Cards */}
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>Total Users</h3>
+          <p>{stats.totalUsers}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Total Donations</h3>
+          <p>{stats.totalDonations}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Active Campaigns</h3>
+          <p>{stats.activeCampaigns}</p>
+        </div>
+      </div>
+
+      {/* Charts Row */}
+      <div className="charts-row">
+        <div className="chart-box">
+          <h3>Weekly Donations</h3>
+          <WeeklyDonationsBar />
+        </div>
+
+        <div className="chart-box">
+          <h3>Donations by Type</h3>
+          <DonationTypePie />
+        </div>
+      </div>
     </div>
   );
 }
 
 export default AdminDashboard;
-
-
